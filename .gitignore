@@ -1,0 +1,4 @@
+todoapp/
+app/db.sqlite3
+app/app/__pycache__
+.DS_Store
