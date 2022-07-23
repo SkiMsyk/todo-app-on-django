@@ -12,6 +12,10 @@ class Tag(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(blank=False, max_length=255)
     
+    
+    def __str__(self):
+        return self.name
+    
 class Group(models.Model):
     
     class Meta:
@@ -20,6 +24,10 @@ class Group(models.Model):
     
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(blank=False, max_length=255)
+    
+    
+    def __str__(self):
+        return self.name
 
 
 class Todo(models.Model):
@@ -44,9 +52,9 @@ class Todo(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     updated_by = models.ForeignKey(User, blank=True, related_name='updated_by', on_delete=models.SET_NULL, null=True)
     due_datetime = models.DateTimeField(blank=True)
-    status = models.IntegerField(choices=Status.choices)
+    status = models.CharField(max_length=100, choices=Status.choices)
     group = models.ForeignKey(Group, blank=True, on_delete=models.SET_NULL, null=True)
-    is_deleted = models.BinaryField(default=False, blank=False)
+    # is_deleted = models.BinaryField(default=False)
     
     
     def __str__(self):

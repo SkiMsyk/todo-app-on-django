@@ -1,4 +1,5 @@
 import imp
+from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
@@ -32,6 +33,7 @@ class UserManager(BaseUserManager):
         )
         
         user.admin = True
+        user.is_staff = True
         user.save(using=self._db)
         return user
 
@@ -46,6 +48,8 @@ class User(AbstractBaseUser):
     )
     name = models.CharField(blank=False, max_length=255, unique=True)
     admin = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     
     objects = UserManager()
     USERNAME_FIELD = 'name'
