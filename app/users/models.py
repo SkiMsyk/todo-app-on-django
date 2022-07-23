@@ -40,8 +40,8 @@ class User(AbstractBaseUser):
         db_table = 'users'
     
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    mail = models.EmailField(
-        verbose_name='e-mail',
+    email = models.EmailField(
+        verbose_name='email',
         max_length=255,
         unique=True
     )
