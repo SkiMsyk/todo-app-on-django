@@ -57,3 +57,47 @@ $ python app/manage.py runserver
 ```
 
 And then the initial page will be displayed at `http://127.0.0.1:8000` (It's depends on your env).
+
+# Define data-model
+
+|todo models|||
+|:-|:-|:-|
+|name|type|primery* or relational#|
+|id|uuid|*|
+|title|char||
+|text|char||
+|created at|datetime||
+|created by|user instance||
+|due datetime|datetime||
+|status|status instance|#|
+|tag|tag instance|#|
+|group|group instance|#|
+|assignee|user instance|#|
+
+|user models|||
+|:-|:-|:-|
+|name|type|primery key|
+|id|uuid|*|
+|user name|char||
+|mail|mail||
+
+|tag models|||
+|:-|:-|:-|
+|name|type|primery key|
+|id|uuid|*|
+|name|char||
+|text|char||
+
+|group models|||
+|:-|:-|:-|
+|name|type|primery key|
+|id|char|*|
+|name|char||
+
+
+|status models|||
+|:-|:-|:-|
+|name|type|primery key|
+|id|cahr|*|
+|name|char||
+
