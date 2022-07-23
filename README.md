@@ -101,3 +101,11 @@ And then the initial page will be displayed at `http://127.0.0.1:8000` (It's dep
 |id|cahr|*|
 |name|char||
 
+# Create super user
+
+```{shell}
+$ python manage.py createsuperuser
+$ Username: admin
+$ Email address: admin@example.com
+$ Password: xxxxxxxx
+```
