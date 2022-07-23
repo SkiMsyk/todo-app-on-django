@@ -6,11 +6,12 @@ from django.core.mail import send_mail
 import uuid
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, password=None):
+    def create_user(self, name, email, password=None):
         if not email:
             raise ValueError("Please input your email address.")
         
         user = self.model(
+            name=name,
             email=self.normalize_email(email)
         )
         
@@ -23,8 +24,9 @@ class UserManager(BaseUserManager):
         return user
     
 
-    def create_superuser(self, email, password):
+    def create_superuser(self, name, email, password):
         user = self.create_user(
+            name,
             email,
             password=password,
         )
@@ -35,9 +37,6 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-    
-    class Meta:
-        db_table = 'users'
     
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     email = models.EmailField(
